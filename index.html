@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RelayERP — every number, explained</title>
+<meta name="description" content="RelayERP is an ERP for every business, small to large: stock, purchasing, sales, invoices, payables, cash and production on one append-only ledger, with an AI assistant.">
+<meta name="theme-color" content="#F2F3EE">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Instrument+Sans:wght@400..700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Noto+Sans+Bengali:wght@400..700&amp;display=swap">
+<style>
+:root{--accent:#C8F03C}
+body{margin:0;background:#F2F3EE}
+*{box-sizing:border-box}
+a{color:inherit;text-underline-offset:4px;text-decoration-thickness:2px}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #4F46E5;outline-offset:3px}
+.cookie a:focus-visible,.cookie button:focus-visible,.cookie input:focus-visible{outline-color:#FFFFFF}
+.link-button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+@keyframes relay-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-track{animation:relay-marquee 52s linear infinite}
+@media (prefers-reduced-motion: reduce){.ticker-track{animation:none}}
+@media (max-width: 900px){
+.bento{grid-template-columns:minmax(0,1fr) !important}
+.bento > *{grid-column:auto !important}
+.nav-links{order:3;width:100%;overflow-x:auto;gap:20px !important}
+}
+</style>
+<script src="/assets/config.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<div style="min-height: 100vh; background: #F2F3EE; color: #0D0F22; font-family: 'Instrument Sans', 'Noto Sans Bengali', system-ui, sans-serif; -webkit-font-smoothing: antialiased;">
+
+<section id="top" style="background-color: #F2F3EE; background-image: linear-gradient(rgba(13,15,34,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,15,34,0.06) 1px, transparent 1px); background-size: 32px 32px; border-bottom: 2px solid #0D0F22;">
+<header style="max-width: 1280px; margin: 0 auto; padding: 18px clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;">
+<a href="#top" style="display: flex; align-items: center; gap: 8px; text-decoration: none; min-height: 44px;">
+<svg width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="6" y="6" width="12" height="36" rx="2.5" fill="#4F46E5"></rect><circle cx="31" cy="17" r="11" fill="#818CF8"></circle><path d="M20 30H31L42 42H31Z" fill="#4F46E5"></path></svg>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -0.02em;">RelayERP</span>
+</a>
+<nav class="nav-links" aria-label="Main" style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; white-space: nowrap;">
+<a href="#flow" style="padding: 12px 0;">How it works</a>
+<a href="#modules" style="padding: 12px 0;">Modules</a>
+<a href="#assistant" style="padding: 12px 0;">AI assistant</a>
+<a href="#approvals" style="padding: 12px 0;">Approvals</a>
+<a href="#pricing" style="padding: 12px 0;">Pricing</a>
+<a href="#contact" style="padding: 12px 0;">Contact</a>
+</nav>
+<div style="display: flex; gap: 8px; align-items: center;">
+<a href="/sign-in" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font-size: 15px; font-weight: 600; text-decoration: none;">Sign in</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none;">Get started</a>
+</div>
+</header>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(32px, 5vw, 64px) clamp(16px, 4vw, 48px) clamp(56px, 7vw, 104px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 64px);">
+<div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 2px solid #0D0F22; border-radius: 999px; background: #FFFFFF; font-family: 'IBM Plex Mono', 'Noto Sans Bengali', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.02em;"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #4F46E5;"></span>ERP for every business, small to large</p>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Noto Sans Bengali', sans-serif; font-size: clamp(46px, 10.4vw, 152px); font-weight: 800; line-height: 0.9; letter-spacing: -0.045em;">Every number,<br><span style="display: inline-block; margin-top: 0.06em; padding: 0 0.14em 0.04em; margin-left: -0.04em; background: var(--accent); border-radius: 0.14em;">explained.</span></h1>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: clamp(40px, 5vw, 72px); align-items: flex-start;">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 32px;">
+<p style="margin: 0; max-width: 540px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: #4A4D63;">RelayERP runs stock, purchasing, sales, invoices, payables, cash and production on one append-only ledger. Owners decide who can do what, where, and with whose sign-off.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none; box-shadow: 5px 5px 0 var(--accent);">Get started<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+<a href="#flow" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 24px; border-radius: 999px; background: #FFFFFF; color: #0D0F22; border: 2px solid #0D0F22; font-size: 16px; font-weight: 600; text-decoration: none;">See how it works</a>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; max-width: 540px; display: flex; flex-direction: column;">
+<li style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 2px solid #0D0F22;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">01</span><span style="font-size: 16px; line-height: 1.5;"><strong style="font-weight: 650;">One source of truth for stock.</strong> Every quantity on screen adds up from the ledger.</span></li>
+<li style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 2px solid #0D0F22;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">02</span><span style="font-size: 16px; line-height: 1.5;"><strong style="font-weight: 650;">Access without a developer.</strong> Roles, warehouse and team scopes, and approvers, set by the owner.</span></li>
+<li style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 2px solid #0D0F22; border-bottom: 2px solid #0D0F22;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">03</span><span style="font-size: 16px; line-height: 1.5;"><strong style="font-weight: 650;">Every change attributable.</strong> Who, when, what before, what after, and who approved it.</span></li>
+</ol>
+</div>
+
+<div style="flex: 1 1 480px; min-width: 0; background: #0D0F22; border-radius: 28px; padding: clamp(16px, 2.4vw, 28px); display: flex; flex-direction: column; gap: 16px; box-shadow: 10px 10px 0 #4F46E5;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A9ACC8;">
+<span>acme / stock / Main warehouse</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; color: var(--accent);"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent);"></span>Ledger, as posted</span>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px;">
+<div>
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4D63;">Stock card</p>
+<p style="margin: 4px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -0.02em;">Copper wire 2.5 mm</p>
+</div>
+<p style="margin: 0; text-align: right;"><span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A4D63;">On hand</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">765.5 m</span></p>
+</div>
+<div style="overflow-x: auto;">
+<table style="width: 100%; min-width: 360px; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.3; font-variant-numeric: tabular-nums;">
+<thead>
+<tr style="color: #4A4D63;">
+<th scope="col" style="text-align: left; font-weight: 500; padding: 6px 0; border-bottom: 1px solid rgba(13,15,34,0.16);">Document</th>
+<th scope="col" style="text-align: left; font-weight: 500; padding: 6px 0; border-bottom: 1px solid rgba(13,15,34,0.16);">Lot</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 6px 0; border-bottom: 1px solid rgba(13,15,34,0.16);">Qty</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 6px 0; border-bottom: 1px solid rgba(13,15,34,0.16);">Balance</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); font-weight: 600;">GRN-12</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08);">CU-2610</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); text-align: right; color: #1F7A3D;">+500.0000</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); text-align: right;">1,240.0000</td></tr>
+<tr><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); font-weight: 600;">DEL-40</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08);">CU-2610</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); text-align: right;">−320.0000</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); text-align: right;">920.0000</td></tr>
+<tr><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); font-weight: 600;">ADJ-3</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08);">CU-2610</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); text-align: right;">−4.5000</td><td style="padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.08); text-align: right;">915.5000</td></tr>
+<tr><td style="padding: 8px 0; font-weight: 600;">TRF-9</td><td style="padding: 8px 0;">CU-2610</td><td style="padding: 8px 0; text-align: right;">−150.0000</td><td style="padding: 8px 0; text-align: right; font-weight: 600;">765.5000</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+<div style="flex: 1 1 250px; min-width: 0; background: var(--accent); color: #0D0F22; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; display: flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Waiting for approval</p>
+<p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em;">Adjust Work gloves — Black / M by −12 pcs</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.45;">Damage. Stock when requested 64 · now 58.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-size: 13px; font-weight: 600;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Elena R.</span>
+<span style="display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; border: 1.5px solid #0D0F22; font-size: 13px; font-weight: 600;">Tom B. · pending</span>
+</div>
+<p style="margin: 0; font-size: 13px; font-weight: 600;">Nothing changes until it is approved.</p>
+</div>
+<div style="flex: 1 1 180px; min-width: 0; background: #4F46E5; color: #FFFFFF; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;">INV-42</span>
+<span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF; color: #3F37C9; font-size: 12px; font-weight: 650;">Partially paid</span>
+</div>
+<div>
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E4E2FF;">Balance</p>
+<p style="margin: 2px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 25px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">$267.00</p>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.4; color: #E4E2FF;">Harbor Hardware · due 30 Oct</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Rules RelayERP enforces" style="background: #0D0F22; color: var(--accent); overflow: hidden;">
+<div class="ticker-track" style="display: flex; width: max-content;">
+<ul style="list-style: none; margin: 0; padding: 18px 56px 18px 0; display: flex; gap: 56px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; white-space: nowrap;">
+<li><span style="color: #FFFFFF;">STK-3</span>  Stock never goes negative</li>
+<li><span style="color: #FFFFFF;">APR-12</span>  A request executes at most once</li>
+<li><span style="color: #FFFFFF;">INT-3</span>  Document numbers have no gaps</li>
+<li><span style="color: #FFFFFF;">TEN-1</span>  Data never crosses organizations</li>
+<li><span style="color: #FFFFFF;">COM-8</span>  A double click never posts twice</li>
+<li><span style="color: #FFFFFF;">AUD-1</span>  Every change is attributable</li>
+<li><span style="color: #FFFFFF;">ENF-1</span>  Every check runs on the server</li>
+</ul>
+<ul aria-hidden="true" style="list-style: none; margin: 0; padding: 18px 56px 18px 0; display: flex; gap: 56px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; white-space: nowrap;">
+<li><span style="color: #FFFFFF;">STK-3</span>  Stock never goes negative</li>
+<li><span style="color: #FFFFFF;">APR-12</span>  A request executes at most once</li>
+<li><span style="color: #FFFFFF;">INT-3</span>  Document numbers have no gaps</li>
+<li><span style="color: #FFFFFF;">TEN-1</span>  Data never crosses organizations</li>
+<li><span style="color: #FFFFFF;">COM-8</span>  A double click never posts twice</li>
+<li><span style="color: #FFFFFF;">AUD-1</span>  Every change is attributable</li>
+<li><span style="color: #FFFFFF;">ENF-1</span>  Every check runs on the server</li>
+</ul>
+</div>
+</section>
+
+<section id="flow" style="background: #F2F3EE;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 72px);">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; justify-content: space-between;">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">How it works</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Noto Sans Bengali', sans-serif; font-size: clamp(40px, 5.6vw, 82px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em;">Pass the baton.<br>Keep the record.</h2>
+</div>
+<p style="margin: 0; flex: 1 1 340px; max-width: 460px; font-size: 18px; line-height: 1.55; color: #4A4D63;">Purchasing hands off to the warehouse, the warehouse to sales, sales to accounts. Every hand-off is a document with a gapless number, and every unit and cent it moves lands in the ledger.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 36px 16px;">
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -9px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">01 · Purchasing</span><span style="align-self: flex-start; padding: 8px 12px; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">PO-7</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Purchase order</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">Ordered once the owner approves it.</span></li>
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -9px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">02 · Warehouse</span><span style="align-self: flex-start; padding: 8px 12px; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">GRN-12</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Receipt</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">500 m of copper wire in, at the order’s cost.</span></li>
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -9px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">03 · Sales</span><span style="align-self: flex-start; padding: 8px 12px; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">ORD-41</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Sales order</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">Confirmed for Harbor Hardware.</span></li>
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -9px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">04 · Warehouse</span><span style="align-self: flex-start; padding: 8px 12px; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">DEL-40</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Delivery</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">320 m out of the lot that expires first.</span></li>
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -9px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">05 · Accounts</span><span style="align-self: flex-start; padding: 8px 12px; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">INV-42</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Invoice</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">Issued with VAT 15%, numbered on issue.</span></li>
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -9px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">06 · Accounts</span><span style="align-self: flex-start; padding: 8px 12px; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">PAY-88</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Payment</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">Part paid; the rest stays due on the invoice.</span></li>
+<li style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 3px solid #0D0F22;"><span aria-hidden="true" style="position: absolute; top: -11px; left: 0; width: 19px; height: 19px; border-radius: 50%; background: var(--accent); border: 3px solid #0D0F22;"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63;">07 · Cash &amp; bank</span><span style="align-self: flex-start; padding: 8px 12px; background: var(--accent); border: 2px solid #0D0F22; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; line-height: 1;">TXN-311</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;">Cash entry</span><span style="font-size: 14px; line-height: 1.5; color: #4A4D63;">Posts to the bank account by itself.</span></li>
+</ol>
+</div>
+</section>
+
+<section id="modules" style="background: #F2F3EE; border-top: 2px solid #0D0F22;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 920px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Modules</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Noto Sans Bengali', sans-serif; font-size: clamp(36px, 4.8vw, 68px); font-weight: 800; line-height: 0.98; letter-spacing: -0.035em;">Everything a plant or trading business runs on.</h2>
+<p style="margin: 0; max-width: 620px; font-size: 18px; line-height: 1.55; color: #4A4D63;">One product, one ledger, one set of permissions. Turn on production, taxes and barcodes only when you need them.</p>
+</div>
+
+<div class="bento" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px;">
+
+<article style="grid-column: span 7; background: #0D0F22; color: #FFFFFF; border-radius: 24px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 380px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);">Inventory</p>
+<h3 style="margin: 0; max-width: 520px; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(28px, 3vw, 44px); font-weight: 800; line-height: 1; letter-spacing: -0.03em;">Stock by warehouse, variant and lot.</h3>
+<p style="margin: 0; max-width: 520px; font-size: 16px; line-height: 1.55; color: #A9ACC8;">Track lots with expiry dates and pick the first to expire. Move many lines between warehouses in one transfer, set reorder levels, and scan barcodes with a phone camera.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px;">
+<ul style="list-style: none; margin: 0; padding: 0; flex: 1 1 260px; display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;">
+<li style="padding: 8px 14px; border: 1.5px solid #3D4170; border-radius: 999px;">Lots &amp; expiry</li>
+<li style="padding: 8px 14px; border: 1.5px solid #3D4170; border-radius: 999px;">Variants</li>
+<li style="padding: 8px 14px; border: 1.5px solid #3D4170; border-radius: 999px;">Transfers</li>
+<li style="padding: 8px 14px; border: 1.5px solid #3D4170; border-radius: 999px;">Reorder levels</li>
+<li style="padding: 8px 14px; border: 1.5px solid #3D4170; border-radius: 999px;">Barcodes &amp; labels</li>
+</ul>
+<div style="width: 236px; max-width: 100%; background: #FFFFFF; color: #0D0F22; border-radius: 12px; padding: 14px 16px 12px; display: flex; flex-direction: column; gap: 8px; transform: rotate(-2deg);">
+<span style="font-size: 13px; font-weight: 650;">Work gloves — Black / M</span>
+<div aria-hidden="true" style="height: 56px; background-image: repeating-linear-gradient(90deg, #0D0F22 0 2px, transparent 2px 4px, #0D0F22 4px 7px, transparent 7px 9px, #0D0F22 9px 10px, transparent 10px 13px, #0D0F22 13px 16px, transparent 16px 17px);"></div>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; text-align: center;">2 000000 000121</span>
+</div>
+</div>
+</article>
+
+<article style="grid-column: span 5; background: var(--accent); color: #0D0F22; border-radius: 24px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 380px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Sales &amp; invoices</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(28px, 3vw, 44px); font-weight: 800; line-height: 1; letter-spacing: -0.03em;">From order to paid, in as many steps as it takes.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55;">Deliver in parts, take returns, invoice what left the warehouse and record partial payments. Credit notes and refunds keep every customer’s credit exact.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;">
+<span style="padding: 6px 12px; border: 1.5px solid #0D0F22; border-radius: 999px;">Draft</span>
+<span aria-hidden="true">→</span>
+<span style="padding: 6px 12px; border: 1.5px solid #0D0F22; border-radius: 999px;">Issued</span>
+<span aria-hidden="true">→</span>
+<span style="padding: 6px 12px; border: 1.5px solid #0D0F22; border-radius: 999px;">Partially paid</span>
+<span aria-hidden="true">→</span>
+<span style="padding: 7px 13px; background: #0D0F22; color: var(--accent); border-radius: 999px; font-weight: 600;">Paid</span>
+</div>
+</article>
+
+<article style="grid-column: span 4; background: #FFFFFF; color: #0D0F22; border: 2px solid #0D0F22; border-radius: 24px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; min-height: 360px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Payables</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px, 2.2vw, 32px); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em;">Bills, supplier payments and credit.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D63;">Bill what was received, pay several bills at once, and settle the rest with debit notes.</p>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-variant-numeric: tabular-nums;">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.14);"><span>BILL-3</span><span>$6,200.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.14);"><span>SPAY-5</span><span>−$4,000.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 2px solid #0D0F22;"><span>DN-1 · price correction</span><span>−$200.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; font-weight: 600;"><span>Still owed</span><span>$2,000.00</span></div>
+</div>
+</article>
+
+<article style="grid-column: span 4; background: #4F46E5; color: #FFFFFF; border-radius: 24px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; min-height: 360px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #E4E2FF;">Cash &amp; bank</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px, 2.2vw, 32px); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em;">Every cent in its account.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #E4E2FF;">Cash boxes, bank accounts and mobile wallets, each with its own balance. Payments and refunds post themselves.</p>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-variant-numeric: tabular-nums;">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);"><span>Cash</span><span>$4,125.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.3);"><span>Bank · current</span><span>$31,890.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0;"><span>Mobile wallet</span><span>$1,260.00</span></div>
+</div>
+</article>
+
+<article style="grid-column: span 4; background: #FFFFFF; color: #0D0F22; border: 2px solid #0D0F22; border-radius: 24px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; min-height: 360px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Production</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px, 2.2vw, 32px); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em;">Recipes in, finished goods out.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D63;">Versioned bills of materials and production orders that consume and receive stock in one step. On only if you make things.</p>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px;">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 2px solid #0D0F22; font-weight: 600;"><span>Extension cord · v3</span><span>1 pcs</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.14);"><span>Copper wire 2.5 mm</span><span>3 m</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.14);"><span>Plug</span><span>1 pcs</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0;"><span>Socket</span><span>1 pcs</span></div>
+</div>
+</article>
+
+<article style="grid-column: span 6; background: #FFFFFF; color: #0D0F22; border: 2px solid #0D0F22; border-radius: 24px; padding: clamp(24px, 3vw, 40px); display: flex; flex-wrap: wrap; align-items: flex-end; gap: 28px 40px; min-height: 320px;">
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Statements &amp; reports</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px, 2.4vw, 36px); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em;">Statements that reconcile to the cent.</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4D63;">Customer and supplier statements, stock cards and a dashboard that only shows what each member may see. Any list exports to Excel; documents print to PDF.</p>
+</div>
+<div style="flex: 1 1 220px; min-width: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-variant-numeric: tabular-nums;">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.14);"><span>Opening</span><span>$1,200.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(13,15,34,0.14);"><span>Invoiced</span><span>+$667.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 2px solid #0D0F22;"><span>Payments</span><span>−$400.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; font-weight: 600;"><span>Closing</span><span>$1,467.00</span></div>
+</div>
+</article>
+
+<article style="grid-column: span 6; background: #E6E8FF; color: #0D0F22; border-radius: 24px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; min-height: 320px;">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3F37C9;">Make it yours</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(24px, 2.4vw, 36px); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em;">Taxes, custom fields and print templates.</h3>
+<p style="margin: 0; max-width: 520px; font-size: 15px; line-height: 1.55; color: #3A3D55;">Add your own tax rates, fields like a tax ID on customers or a part number on order lines, and choose what every PDF prints.</p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;">
+<li style="padding: 8px 14px; background: #FFFFFF; border: 1.5px solid #0D0F22; border-radius: 999px;">VAT 15%</li>
+<li style="padding: 8px 14px; background: #FFFFFF; border: 1.5px solid #0D0F22; border-radius: 999px;">Tax ID</li>
+<li style="padding: 8px 14px; background: #FFFFFF; border: 1.5px solid #0D0F22; border-radius: 999px;">Delivery terms</li>
+<li style="padding: 8px 14px; background: #FFFFFF; border: 1.5px solid #0D0F22; border-radius: 999px;">Part number</li>
+</ul>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="assistant" style="background: #0D0F22; color: #FFFFFF; border-top: 2px solid #0D0F22;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(48px, 6vw, 88px); align-items: center;">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--accent); color: #0D0F22; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>AI assistant</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(40px, 5.4vw, 80px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em;">Ask your ERP.<br><span style="color: var(--accent);">It answers from your books.</span></h2>
+<p style="margin: 0; max-width: 520px; font-size: 18px; line-height: 1.55; color: #A9ACC8;">Ask about stock, balances, statements or approvals in plain words, or hand it a supplier invoice and get a draft order back. It works inside your permissions and creates nothing until you say so.</p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 24px 28px;">
+<li style="display: flex; flex-direction: column; gap: 8px;"><span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #1E2142; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><strong style="font-size: 17px; font-weight: 650;">Ask in plain words</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">Stock on hand, who owes what, last quarter's best sellers: answered from your own records.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px;"><span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #1E2142; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg></span><strong style="font-size: 17px; font-weight: 650;">Drafts from a photo or PDF</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">Snap a supplier invoice and get a draft purchase or sales order, priced and taxed from your catalog.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px;"><span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #1E2142; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span><strong style="font-size: 17px; font-weight: 650;">You stay in control</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">It sees only what your role can see, and a draft is created only when you accept it.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px;"><span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #1E2142; color: var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></span><strong style="font-size: 17px; font-weight: 650;">Speak and listen</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">Dictate a question on the warehouse floor and have the answer read aloud.</span></li>
+</ul>
+</div>
+
+<div style="flex: 1 1 480px; min-width: 0; background: #16182F; border: 1.5px solid #34385F; border-radius: 28px; padding: clamp(16px, 2.4vw, 24px); display: flex; flex-direction: column; gap: 14px; box-shadow: 10px 10px 0 var(--accent);">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid #2E3156;">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700;"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent);"></span>Assistant</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A9ACC8;">1,240 credits left this month</span>
+</div>
+<p style="margin: 0; align-self: flex-end; max-width: 80%; padding: 12px 16px; border-radius: 18px 18px 4px 18px; background: var(--accent); color: #0D0F22; font-size: 15px; font-weight: 500; line-height: 1.45;">Which customers owe us more than $1,000?</p>
+<div style="align-self: flex-start; max-width: 88%; padding: 14px 16px; border-radius: 18px 18px 18px 4px; background: #1E2142; font-size: 15px; line-height: 1.5; display: flex; flex-direction: column; gap: 8px;">
+<span>Two customers are over $1,000:</span>
+<span style="display: flex; justify-content: space-between; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px;"><span>Harbor Hardware</span><span>$1,467.00</span></span>
+<span style="display: flex; justify-content: space-between; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px;"><span>Northline Builders</span><span>$1,120.50</span></span>
+<span style="color: #A9ACC8;">Want their statements?</span>
+</div>
+<div style="align-self: flex-end; max-width: 80%; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 10px; background: #FFFFFF; color: #0D0F22; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>supplier-invoice.pdf</span>
+<p style="margin: 0; padding: 12px 16px; border-radius: 18px 18px 4px 18px; background: var(--accent); color: #0D0F22; font-size: 15px; font-weight: 500; line-height: 1.45;">Make a purchase order from this.</p>
+</div>
+<div style="align-self: flex-start; width: 100%; max-width: 420px; background: #FFFFFF; color: #0D0F22; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+<div>
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4D63;">Draft purchase order</p>
+<p style="margin: 4px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700;">Northline Metals · Main warehouse</p>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; font-variant-numeric: tabular-nums;">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(13,15,34,0.12);"><span>Copper wire 2.5 mm · 1,000 m</span><span>$950.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid rgba(13,15,34,0.12);"><span>Work gloves — Black / M · 200 pcs</span><span>$420.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 2px solid #0D0F22;"><span>VAT 15%</span><span>$205.50</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-weight: 600;"><span>Total</span><span>$1,575.50</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<span style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-size: 14px; font-weight: 600;">Create draft</span>
+<span style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 2px solid #0D0F22; font-size: 14px; font-weight: 600;">Decline</span>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 16px; border-radius: 999px; background: #0D0F22; border: 1.5px solid #34385F;">
+<span style="flex: 1; min-width: 0; font-size: 14px; color: #8A8DAD; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Ask about your stock, sales or money…</span>
+<span aria-hidden="true" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; color: #FFFFFF;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><path d="M12 19v3"></path></svg></span>
+<span aria-hidden="true" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--accent); color: #0D0F22;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="approvals" style="background: #FFFFFF; border-top: 2px solid #0D0F22; border-bottom: 2px solid #0D0F22;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(48px, 6vw, 88px); align-items: center;">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Roles, scopes &amp; sign-offs</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Noto Sans Bengali', sans-serif; font-size: clamp(34px, 4vw, 58px); font-weight: 800; line-height: 1; letter-spacing: -0.035em;">You decide who does what, where, and with whose sign-off.</h2>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px;">
+<li style="display: flex; gap: 16px; align-items: flex-start;"><span style="flex: 0 0 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #0D0F22; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;">1</span><span style="display: flex; flex-direction: column; gap: 4px;"><strong style="font-size: 17px; font-weight: 650;">Roles from a permission catalog</strong><span style="font-size: 15px; line-height: 1.55; color: #4A4D63;">View stock, adjust it, confirm sales, issue invoices. Pick what the job needs; the matching view rights follow.</span></span></li>
+<li style="display: flex; gap: 16px; align-items: flex-start;"><span style="flex: 0 0 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #0D0F22; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;">2</span><span style="display: flex; flex-direction: column; gap: 4px;"><strong style="font-size: 17px; font-weight: 650;">Scopes that match your floor</strong><span style="font-size: 15px; line-height: 1.55; color: #4A4D63;">Limit each permission to warehouses and accounts, and to the member’s own records or their whole team’s. Override one person without a new role.</span></span></li>
+<li style="display: flex; gap: 16px; align-items: flex-start;"><span style="flex: 0 0 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #0D0F22; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;">3</span><span style="display: flex; flex-direction: column; gap: 4px;"><strong style="font-size: 17px; font-weight: 650;">Sign-offs that run exactly once</strong><span style="font-size: 15px; line-height: 1.55; color: #4A4D63;">Approvers see the request as it was and as it is now. On approval it runs as the requester, once, or fails with a reason.</span></span></li>
+</ol>
+</div>
+
+<div style="flex: 1 1 520px; min-width: 0; background: #F2F3EE; border: 2px solid #0D0F22; border-radius: 22px; box-shadow: 10px 10px 0 #0D0F22; overflow: hidden;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 2px solid #0D0F22;">
+<div>
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4D63;">Role</p>
+<p style="margin: 2px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.02em;">Storekeeper</p>
+</div>
+<span style="padding: 7px 14px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;">4 members · 2 overrides</span>
+</div>
+<div style="overflow-x: auto; padding: 8px 12px;">
+<table style="width: 100%; min-width: 460px; border-collapse: collapse; font-size: 14px;">
+<thead>
+<tr>
+<th scope="col" style="text-align: left; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63; border-bottom: 2px solid #0D0F22;">Permission</th>
+<th scope="col" style="text-align: left; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63; border-bottom: 2px solid #0D0F22;">Warehouses</th>
+<th scope="col" style="text-align: left; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63; border-bottom: 2px solid #0D0F22;">Records</th>
+<th scope="col" style="text-align: left; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63; border-bottom: 2px solid #0D0F22;">Approval</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); font-family: 'IBM Plex Mono', monospace; font-weight: 500;">stock.view</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);">Main warehouse</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); color: #4A4D63;">—</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); color: #4A4D63;">—</td></tr>
+<tr><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); font-family: 'IBM Plex Mono', monospace; font-weight: 500;">stock.adjust</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);">Main warehouse</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); color: #4A4D63;">—</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);"><span style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--accent); color: #0D0F22; font-size: 12px; font-weight: 650;">Required</span></td></tr>
+<tr><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); font-family: 'IBM Plex Mono', monospace; font-weight: 500;">stock.transfer</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);">Main warehouse, Port depot</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); color: #4A4D63;">—</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);"><span style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--accent); color: #0D0F22; font-size: 12px; font-weight: 650;">Required</span></td></tr>
+<tr><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); font-family: 'IBM Plex Mono', monospace; font-weight: 500;">sale.view</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);">Main warehouse</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14);">Team</td><td style="padding: 12px; border-bottom: 1px solid rgba(13,15,34,0.14); color: #4A4D63;">—</td></tr>
+<tr><td style="padding: 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 500;">sale.deliver</td><td style="padding: 12px;">Main warehouse</td><td style="padding: 12px; color: #4A4D63;">—</td><td style="padding: 12px; color: #4A4D63;">—</td></tr>
+</tbody>
+</table>
+</div>
+<div style="background: #FFFFFF; border-top: 2px solid #0D0F22; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; font-size: 15px; line-height: 1.5;"><strong style="font-weight: 650;">Rafiq Ahmed</strong> <span style="color: #4A4D63;">· stock.view narrowed to Main warehouse</span></p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #4A4D63; margin-right: 4px;">Approvers</span>
+<span style="padding: 6px 12px; border: 1.5px solid #0D0F22; border-radius: 999px; font-size: 14px; font-weight: 600;">Elena Ruiz</span>
+<span style="padding: 6px 12px; border: 1.5px solid #0D0F22; border-radius: 999px; font-size: 14px; font-weight: 600;">Tom Becker</span>
+</div>
+<div role="group" aria-label="Approval mode" style="display: inline-flex; flex-wrap: wrap; align-self: flex-start; padding: 4px; gap: 4px; border: 2px solid #0D0F22; border-radius: 999px;">
+<button type="button" aria-pressed="true" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">All must approve</button>
+<button type="button" aria-pressed="false" style="min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: #0D0F22; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">First decision wins</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="ledger" style="background: #0D0F22; color: #FFFFFF;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; justify-content: space-between;">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);">The ledger</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Noto Sans Bengali', sans-serif; font-size: clamp(40px, 6.6vw, 100px); font-weight: 800; line-height: 0.92; letter-spacing: -0.045em;">Nothing is edited.<br><span style="color: var(--accent);">Everything is explained.</span></h2>
+</div>
+<p style="margin: 0; flex: 1 1 320px; max-width: 420px; font-size: 18px; line-height: 1.55; color: #A9ACC8;">Stock changes only by posting to an append-only ledger. A mistake is corrected with a new entry, so the balance on screen always adds up from the rows above it.</p>
+</div>
+
+<div style="border: 1.5px solid #34385F; border-radius: 22px; overflow-x: auto;">
+<table style="width: 100%; min-width: 820px; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-variant-numeric: tabular-nums;">
+<thead>
+<tr style="color: #A9ACC8;">
+<th scope="col" style="text-align: left; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">Posted</th>
+<th scope="col" style="text-align: left; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">Document</th>
+<th scope="col" style="text-align: left; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">Source</th>
+<th scope="col" style="text-align: left; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">Warehouse · lot</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">In</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">Out</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 16px 20px; border-bottom: 1.5px solid #34385F;">Balance after</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; color: #A9ACC8;">11 Oct 10:15</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; font-weight: 600;">MO-5</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Production</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Main warehouse · CU-2610</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right; color: #6E7299;">—</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">60.0000</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">720.0000</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; color: #A9ACC8;">11 Oct 16:02</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; font-weight: 600;">RET-2</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Customer return</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Main warehouse · CU-2610</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">20.0000</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right; color: #6E7299;">—</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">740.0000</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; color: #A9ACC8;">12 Oct 09:12</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; font-weight: 600;">GRN-12</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Purchase</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Main warehouse · CU-2610</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">500.0000</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right; color: #6E7299;">—</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">1,240.0000</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; color: #A9ACC8;">12 Oct 11:40</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; font-weight: 600;">DEL-40</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Sale</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Main warehouse · CU-2610</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right; color: #6E7299;">—</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">320.0000</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">920.0000</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; color: #A9ACC8;">12 Oct 14:05</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; font-weight: 600;">ADJ-3</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Adjustment · damage</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A;">Main warehouse · CU-2610</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right; color: #6E7299;">—</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">4.5000</td><td style="padding: 14px 20px; border-bottom: 1px solid #23264A; text-align: right;">915.5000</td></tr>
+<tr><td style="padding: 14px 20px; color: #A9ACC8;">12 Oct 16:22</td><td style="padding: 14px 20px; font-weight: 600;">TRF-9</td><td style="padding: 14px 20px;">Transfer to Port depot</td><td style="padding: 14px 20px;">Main warehouse · CU-2610</td><td style="padding: 14px 20px; text-align: right; color: #6E7299;">—</td><td style="padding: 14px 20px; text-align: right;">150.0000</td><td style="padding: 14px 20px; text-align: right;"><span style="padding: 4px 10px; border-radius: 8px; background: var(--accent); color: #0D0F22; font-weight: 600;">765.5000</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px;">
+<li style="display: flex; flex-direction: column; gap: 12px; padding: 24px; border: 1.5px solid #34385F; border-radius: 20px;"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--accent); color: #0D0F22; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">STK-3</span><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em;">Never below zero</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">A movement that would take any lot negative fails as a whole, even when two people post at the same moment.</span></li>
+<li style="display: flex; flex-direction: column; gap: 12px; padding: 24px; border: 1.5px solid #34385F; border-radius: 20px;"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--accent); color: #0D0F22; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">INT-3</span><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em;">Numbers without gaps</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">Orders, invoices and receipts are numbered when they are committed, in an unbroken sequence per organization.</span></li>
+<li style="display: flex; flex-direction: column; gap: 12px; padding: 24px; border: 1.5px solid #34385F; border-radius: 20px;"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--accent); color: #0D0F22; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">AUD-1</span><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em;">Before and after</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">Every change records the member, the time, both versions and the approval behind it.</span></li>
+<li style="display: flex; flex-direction: column; gap: 12px; padding: 24px; border: 1.5px solid #34385F; border-radius: 20px;"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--accent); color: #0D0F22; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;">SEC-12</span><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em;">Walled off by the database</strong><span style="font-size: 15px; line-height: 1.55; color: #A9ACC8;">Each organization is isolated by the database itself, so even a faulty query cannot reach another’s records.</span></li>
+</ul>
+</div>
+</section>
+
+<section id="global" style="background: #4F46E5; color: #FFFFFF;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(48px, 6vw, 88px); align-items: center;">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #E4E2FF;">Built to travel</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.6vw, 66px); font-weight: 800; line-height: 1; letter-spacing: -0.035em;">Your currency, your timezone, your team’s language.</h2>
+<p style="margin: 0; max-width: 520px; font-size: 18px; line-height: 1.55; color: #E4E2FF;">Each organization works in its own currency and timezone, and each member picks the language they read in. Money, numbers and dates follow the reader’s locale.</p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 16px; font-weight: 500;">
+<li style="display: flex; align-items: center; gap: 14px;"><span style="flex: 0 0 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #FFFFFF; color: #3F37C9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"></path><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path></svg></span>Run several organizations from one sign-in</li>
+<li style="display: flex; align-items: center; gap: 14px;"><span style="flex: 0 0 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #FFFFFF; color: #3F37C9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M8 7v10"></path><path d="M12 7v10"></path><path d="M17 7v10"></path></svg></span>Scan barcodes with the phone camera</li>
+<li style="display: flex; align-items: center; gap: 14px;"><span style="flex: 0 0 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #FFFFFF; color: #3F37C9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M12 18h.01"></path></svg></span>Install it like an app on phone, tablet or desktop</li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+<span style="margin-right: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #E4E2FF;">Languages</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #3F37C9; font-size: 14px; font-weight: 600;">English</span>
+<span lang="bn" style="padding: 5px 12px; border-radius: 999px; border: 1.5px solid #FFFFFF; font-family: 'Noto Sans Bengali', sans-serif; font-size: 14px; font-weight: 600;">বাংলা</span>
+<span style="padding: 5px 12px; border-radius: 999px; border: 1.5px dashed #E4E2FF; color: #E4E2FF; font-size: 14px; font-weight: 600;">More on the way</span>
+</div>
+</div>
+
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<dl style="margin: 0; display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px;">
+<div style="display: flex; gap: 8px; padding: 9px 14px; border-radius: 999px; background: #0D0F22;"><dt style="color: #A9ACC8;">Currency</dt><dd style="margin: 0; color: #FFFFFF; font-weight: 600;">USD</dd></div>
+<div style="display: flex; gap: 8px; padding: 9px 14px; border-radius: 999px; background: #0D0F22;"><dt style="color: #A9ACC8;">Timezone</dt><dd style="margin: 0; color: #FFFFFF; font-weight: 600;">America/New_York</dd></div>
+<div style="display: flex; gap: 8px; padding: 9px 14px; border-radius: 999px; background: #0D0F22;"><dt style="color: #A9ACC8;">Language</dt><dd style="margin: 0; color: #FFFFFF; font-weight: 600;">English</dd></div>
+</dl>
+<div style="background: #FFFFFF; color: #0D0F22; border-radius: 22px; padding: clamp(20px, 2.6vw, 32px); display: flex; flex-direction: column; gap: 20px; box-shadow: 10px 10px 0 #0D0F22;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px;">
+<div>
+<p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.02em;">Invoice <span style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 600; letter-spacing: 0;">INV-42</span></p>
+<p style="margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: #4A4D63;">Issued 12 Oct 2026 · Customer: Harbor Hardware</p>
+</div>
+<span style="padding: 5px 12px; border-radius: 999px; background: #E6E8FF; color: #3F37C9; font-size: 13px; font-weight: 650;">Partially paid</span>
+</div>
+<div style="overflow-x: auto;">
+<table style="width: 100%; min-width: 400px; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums;">
+<thead>
+<tr style="color: #4A4D63;">
+<th scope="col" style="text-align: left; font-weight: 500; padding: 8px 0; border-bottom: 2px solid #0D0F22;">Item</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 8px 0 8px 12px; border-bottom: 2px solid #0D0F22;">Qty</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 8px 0 8px 12px; border-bottom: 2px solid #0D0F22;">Price</th>
+<th scope="col" style="text-align: right; font-weight: 500; padding: 8px 0 8px 12px; border-bottom: 2px solid #0D0F22;">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px 0; border-bottom: 1px solid rgba(13,15,34,0.14); font-weight: 500;">Copper wire 2.5 mm</td>
+<td style="padding: 12px 0 12px 12px; border-bottom: 1px solid rgba(13,15,34,0.14); text-align: right; white-space: nowrap;">320 m</td>
+<td style="padding: 12px 0 12px 12px; border-bottom: 1px solid rgba(13,15,34,0.14); text-align: right; white-space: nowrap;">$1.25</td>
+<td style="padding: 12px 0 12px 12px; border-bottom: 1px solid rgba(13,15,34,0.14); text-align: right; white-space: nowrap;">$400.00</td>
+</tr>
+<tr>
+<td style="padding: 12px 0; border-bottom: 1px solid rgba(13,15,34,0.14); font-weight: 500;">Work gloves — Black / M</td>
+<td style="padding: 12px 0 12px 12px; border-bottom: 1px solid rgba(13,15,34,0.14); text-align: right; white-space: nowrap;">40 pcs</td>
+<td style="padding: 12px 0 12px 12px; border-bottom: 1px solid rgba(13,15,34,0.14); text-align: right; white-space: nowrap;">$4.50</td>
+<td style="padding: 12px 0 12px 12px; border-bottom: 1px solid rgba(13,15,34,0.14); text-align: right; white-space: nowrap;">$180.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="align-self: flex-end; width: 100%; max-width: 300px; display: flex; flex-direction: column; font-size: 14px; font-variant-numeric: tabular-nums;">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 6px 0;"><span style="color: #4A4D63;">Subtotal</span><span>$580.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 6px 0;"><span style="color: #4A4D63;">VAT 15%</span><span>$87.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 2px solid #0D0F22; font-weight: 650;"><span>Total</span><span>$667.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 6px 0;"><span style="color: #4A4D63;">Paid</span><span>$400.00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 6px; padding: 10px 12px; border-radius: 10px; background: var(--accent); font-weight: 700;"><span>Remaining due</span><span>$267.00</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="pricing" style="background: #F2F3EE; border-top: 2px solid #0D0F22;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 56px);">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; justify-content: space-between;">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Pricing</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(40px, 5.6vw, 82px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em;">One plan to start.<br>Room to grow.</h2>
+</div>
+<div role="group" aria-label="Billing period" style="display: inline-flex; gap: 4px; padding: 4px; border: 2px solid #0D0F22; border-radius: 999px; background: #FFFFFF;">
+<button type="button" data-action="setMonthly" aria-pressed="true" style="min-height: 44px; padding: 0 20px; border: 0; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">Monthly</button>
+<button type="button" data-action="setYearly" aria-pressed="false" style="min-height: 44px; padding: 0 20px; border: 0; border-radius: 999px; background: transparent; color: #0D0F22; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">Yearly</button>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 24px; align-items: stretch;">
+<article style="position: relative; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 24px; box-shadow: 10px 10px 0 var(--accent); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.02em;">Standard</h3>
+<span style="padding: 6px 12px; border-radius: 999px; background: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">50% off</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(52px, 6vw, 72px); font-weight: 800; line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;"><span data-plan="price">$9.99</span></span>
+<span style="font-size: 17px; font-weight: 500; color: #4A4D63;"><span data-plan="per">/ month</span></span>
+<span style="flex-basis: 100%; font-size: 15px; color: #4A4D63;"><s data-plan="was">$19.99</s> <span data-plan="note">a month, billed monthly</span></span>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.45;">
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F7A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px;"><path d="M20 6 9 17l-5-5"></path></svg>Up to 10 active members</li>
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F7A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px;"><path d="M20 6 9 17l-5-5"></path></svg>Up to 5,000 active customers, suppliers, warehouses and product variants</li>
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F7A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px;"><path d="M20 6 9 17l-5-5"></path></svg>Up to 5,000 documents a month</li>
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F7A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px;"><path d="M20 6 9 17l-5-5"></path></svg>Unlimited cash &amp; bank entries</li>
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F7A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px;"><path d="M20 6 9 17l-5-5"></path></svg><span><strong style="font-weight: 650;">AI assistant</strong> with purchased credits</span></li>
+</ul>
+<a href="#contact" style="margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none;">Get started<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+</article>
+
+<article style="background: #0D0F22; color: #FFFFFF; border: 2px solid #0D0F22; border-radius: 24px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 24px;">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.02em;">Enterprise</h3>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(52px, 6vw, 72px); font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: var(--accent);">Custom</span>
+<span style="font-size: 15px; line-height: 1.5; color: #A9ACC8;">For larger organizations that need higher limits or their own terms.</span>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.45;">
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px; color: var(--accent);"><path d="M20 6 9 17l-5-5"></path></svg>Custom member, master item and document limits</li>
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px; color: var(--accent);"><path d="M20 6 9 17l-5-5"></path></svg><span><strong style="font-weight: 650;">AI assistant</strong> credits every month</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 2px; color: var(--accent);"><path d="M20 6 9 17l-5-5"></path></svg>Custom pricing and payment terms</li>
+</ul>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #A9ACC8;">Contact us at <a href="mailto:contact@relayerp.app" style="color: #FFFFFF; font-weight: 600;">contact@relayerp.app</a> and we will prepare an offer for your organization.</p>
+<a href="mailto:contact@relayerp.app" style="margin-top: auto; display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #0D0F22; font-size: 16px; font-weight: 600; text-decoration: none;">Contact us</a>
+</article>
+</div>
+</div>
+</section>
+
+<section id="get-started" style="background: var(--accent); color: #0D0F22; border-top: 2px solid #0D0F22;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-end; justify-content: space-between;">
+<h2 style="margin: 0; flex: 1 1 560px; min-width: 0; font-family: 'Bricolage Grotesque', 'Noto Sans Bengali', sans-serif; font-size: clamp(40px, 5.4vw, 80px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em;">Bring your floor, your books and your team.</h2>
+<div style="flex: 1 1 340px; max-width: 440px; display: flex; flex-direction: column; gap: 24px;">
+<p style="margin: 0; font-size: 18px; line-height: 1.55;">Create an organization, invite your team by email and set up roles and approvers. Every new organization is reviewed and approved before first use.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none;">Get started<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+<a href="/sign-in" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 24px; border-radius: 999px; border: 2px solid #0D0F22; color: #0D0F22; font-size: 16px; font-weight: 600; text-decoration: none;">Sign in</a>
+</div>
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;">Questions? <a href="mailto:contact@relayerp.app" style="font-weight: 600;">contact@relayerp.app</a></p>
+</div>
+</div>
+</section>
+
+<section id="contact" style="background: #F2F3EE; border-top: 2px solid #0D0F22;">
+<div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 9vw, 128px) clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(48px, 6vw, 88px); align-items: flex-start;">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4F46E5;">Contact</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(36px, 4.6vw, 66px); font-weight: 800; line-height: 1; letter-spacing: -0.035em;">Tell us how your business runs.</h2>
+<p style="margin: 0; max-width: 460px; font-size: 18px; line-height: 1.55; color: #4A4D63;">Write about your warehouses, documents and team. We reply by email and help you set up your organization.</p>
+</div>
+<dl style="margin: 0; display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 2px solid #0D0F22;">
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4A4D63;">Email</dt>
+<dd style="margin: 0; font-size: 19px; font-weight: 600;"><a href="mailto:contact@relayerp.app">contact@relayerp.app</a></dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 2px solid #0D0F22; border-bottom: 2px solid #0D0F22;">
+<dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4A4D63;">Address</dt>
+<dd style="margin: 0;"><address style="font-style: normal; font-size: 19px; line-height: 1.5; font-weight: 500;">Relay Solutions Ltd<br>730, West Shewrapara<br>Dhaka-1216, Bangladesh</address></dd>
+</div>
+</dl>
+</div>
+
+<form action="https://api.staticforms.dev/submit" method="POST" style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 2px solid #0D0F22; border-radius: 22px; box-shadow: 10px 10px 0 var(--accent); padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 20px;">
+<input type="hidden" name="apiKey" value="sf_fd766a0ab23700d3a84bb1fa">
+<input type="hidden" name="subject" value="Relay ERP Enquiry">
+<input type="text" name="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none;">
+<p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.02em;">Send us a message</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+<div style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<label for="cf-name" style="font-size: 14px; font-weight: 650;">Name</label>
+<input type="text" id="cf-name" name="name" required="required" autocomplete="name" style="width: 100%; min-height: 50px; padding: 0 14px; border: 2px solid #0D0F22; border-radius: 12px; background: #FFFFFF; color: #0D0F22; font: inherit; font-size: 16px;">
+</div>
+<div style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<label for="cf-email" style="font-size: 14px; font-weight: 650;">Work email</label>
+<input type="email" id="cf-email" name="email" required="required" autocomplete="email" style="width: 100%; min-height: 50px; padding: 0 14px; border: 2px solid #0D0F22; border-radius: 12px; background: #FFFFFF; color: #0D0F22; font: inherit; font-size: 16px;">
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label for="cf-message" style="font-size: 14px; font-weight: 650;">Message</label>
+<textarea id="cf-message" name="message" rows="6" required="required" aria-describedby="cf-message-hint" style="width: 100%; min-height: 160px; padding: 12px 14px; border: 2px solid #0D0F22; border-radius: 12px; background: #FFFFFF; color: #0D0F22; font: inherit; font-size: 16px; line-height: 1.5; resize: vertical;"></textarea>
+<span id="cf-message-hint" style="font-size: 13px; line-height: 1.5; color: #4A4D63;">What you make or trade, how many warehouses you run and how many people would use RelayERP.</span>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<input type="checkbox" id="cf-consent" required="required" style="flex: 0 0 22px; width: 22px; height: 22px; margin: 1px 0 0; accent-color: #4F46E5;">
+<label for="cf-consent" style="font-size: 14px; line-height: 1.55; color: #3A3D55;">I agree that Relay Solutions Ltd may use these details to reply to my enquiry, as described in the <a href="/privacy/" style="font-weight: 600; color: #3F37C9;">privacy policy</a>.</label>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px;">
+<button type="submit" style="display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 26px; border: 0; border-radius: 999px; background: #0D0F22; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 5px 5px 0 var(--accent);">Send message<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+<p style="margin: 0; max-width: 280px; font-size: 13px; line-height: 1.5; color: #4A4D63;">Your message reaches us through StaticForms, our form provider.</p>
+</div>
+</form>
+</div>
+</section>
+
+<footer style="background: #0D0F22; color: #A9ACC8;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px clamp(16px, 4vw, 48px) 40px; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+<div style="flex: 1 1 280px; max-width: 360px; display: flex; flex-direction: column; gap: 14px;">
+<a href="#top" style="display: inline-flex; align-items: center; gap: 8px; color: #FFFFFF; text-decoration: none; min-height: 44px;"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="6" y="6" width="12" height="36" rx="2.5" fill="#6366F1"></rect><circle cx="31" cy="17" r="11" fill="#A5B4FC"></circle><path d="M20 30H31L42 42H31Z" fill="#6366F1"></path></svg><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -0.02em;">RelayERP</span></a>
+<p style="margin: 0; font-size: 15px; line-height: 1.55;">Stock, sales, money and production for manufacturers and traders.</p>
+<address style="margin: 0; font-style: normal; font-size: 15px; line-height: 1.6;">Relay Solutions Ltd<br>730, West Shewrapara<br>Dhaka-1216, Bangladesh</address>
+<a href="mailto:contact@relayerp.app" style="align-self: flex-start; padding: 10px 0; font-size: 15px; line-height: 24px; font-weight: 600; color: #FFFFFF;">contact@relayerp.app</a>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 32px 64px;">
+<div style="display: flex; flex-direction: column;">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF;">Product</p>
+<a href="#modules" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Inventory</a>
+<a href="#modules" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Sales &amp; invoices</a>
+<a href="#modules" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Payables</a>
+<a href="#modules" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Cash &amp; bank</a>
+<a href="#modules" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Production</a>
+</div>
+<div style="display: flex; flex-direction: column;">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF;">Platform</p>
+<a href="#approvals" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Approvals</a>
+<a href="#ledger" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Ledger</a>
+<a href="#global" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Currencies &amp; languages</a>
+</div>
+<div style="display: flex; flex-direction: column;">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF;">Account</p>
+<a href="/sign-in" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Sign in</a>
+<a href="#contact" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Get started</a>
+<a href="#contact" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Contact</a>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start;">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF;">Legal</p>
+<a href="/privacy/" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Privacy policy</a>
+<a href="/cookies/" style="padding: 10px 0; font-size: 15px; line-height: 24px;">Cookie policy</a>
+<button type="button" class="link-button" data-action="openCookieSettings" style="padding: 10px 0; border: 0; background: transparent; color: inherit; font: inherit; font-size: 15px; line-height: 24px; text-align: left; cursor: pointer;">Cookie settings</button>
+</div>
+</nav>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 1px solid #2A2D52; font-family: 'IBM Plex Mono', monospace; font-size: 13px;">
+<span>© 2026 Relay Solutions Ltd</span>
+<span>Every number, explained.</span>
+</div>
+</div>
+</footer>
+
+<div data-consent="banner" hidden>
+<section class="cookie" aria-label="Cookie consent" style="position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50; max-width: 1080px; margin: 0 auto; background: #0D0F22; color: #FFFFFF; border-radius: 22px; box-shadow: 8px 8px 0 var(--accent); padding: clamp(18px, 2.4vw, 28px); display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px;">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.01em;">Your cookie choices</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #C9CBE0;">We use cookies and similar technologies this site needs to work. With your consent we would also use Google Analytics to understand visits and Meta Pixel to measure our campaigns. Neither runs until you agree, and you can change your choice at any time under Cookie settings. <a href="/cookies/" style="color: #FFFFFF; font-weight: 600;">Cookie policy</a> · <a href="/privacy/" style="color: #FFFFFF; font-weight: 600;">Privacy policy</a></p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<button type="button" data-action="rejectAll" style="min-height: 46px; padding: 0 20px; border: 2px solid var(--accent); border-radius: 999px; background: var(--accent); color: #0D0F22; font: inherit; font-size: 15px; font-weight: 650; cursor: pointer;">Reject all</button>
+<button type="button" data-action="acceptAll" style="min-height: 46px; padding: 0 20px; border: 2px solid var(--accent); border-radius: 999px; background: var(--accent); color: #0D0F22; font: inherit; font-size: 15px; font-weight: 650; cursor: pointer;">Accept all</button>
+<button type="button" data-action="customize" style="min-height: 46px; padding: 0 20px; border: 2px solid #FFFFFF; border-radius: 999px; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 650; cursor: pointer;">Customize</button>
+</div>
+</section>
+</div>
+
+<div data-consent="prefs" hidden>
+<section class="cookie" aria-label="Cookie settings" style="position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50; max-width: 640px; max-height: calc(100vh - 32px); overflow-y: auto; margin: 0 auto; background: #0D0F22; color: #FFFFFF; border-radius: 22px; box-shadow: 8px 8px 0 var(--accent); padding: clamp(20px, 2.6vw, 32px); display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em;">Cookie settings</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #C9CBE0;">Choose which optional tracking we may use. Essential cookies are always on because the site cannot work without them. <a href="/cookies/" style="color: #FFFFFF; font-weight: 600;">Cookie policy</a></p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;">
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #2E3156;">
+<input type="checkbox" id="ck-necessary" checked disabled style="flex: 0 0 22px; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--accent);">
+<label for="ck-necessary" style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 16px; font-weight: 650;">Essential <span style="margin-left: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; color: var(--accent);">Always on</span></span><span style="font-size: 14px; line-height: 1.5; color: #C9CBE0;">Keep you signed in and the site secure, and remember choices such as your language and this cookie setting.</span></label>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #2E3156;">
+<input type="checkbox" id="ck-analytics" data-consent-toggle="analytics" style="flex: 0 0 22px; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--accent); cursor: pointer;">
+<label for="ck-analytics" style="display: flex; flex-direction: column; gap: 4px; cursor: pointer;"><span style="font-size: 16px; font-weight: 650;">Analytics</span><span style="font-size: 14px; line-height: 1.5; color: #C9CBE0;">Google Analytics, to understand visits and how pages are used.</span></label>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #2E3156; border-bottom: 1px solid #2E3156;">
+<input type="checkbox" id="ck-marketing" data-consent-toggle="marketing" style="flex: 0 0 22px; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--accent); cursor: pointer;">
+<label for="ck-marketing" style="display: flex; flex-direction: column; gap: 4px; cursor: pointer;"><span style="font-size: 16px; font-weight: 650;">Advertising and measurement</span><span style="font-size: 14px; line-height: 1.5; color: #C9CBE0;">Meta Pixel, to measure events and campaign performance and support advertising.</span></label>
+</li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<button type="button" data-action="saveChoices" style="min-height: 46px; padding: 0 20px; border: 2px solid var(--accent); border-radius: 999px; background: var(--accent); color: #0D0F22; font: inherit; font-size: 15px; font-weight: 650; cursor: pointer;">Save choices</button>
+<button type="button" data-action="rejectAll" style="min-height: 46px; padding: 0 20px; border: 2px solid #FFFFFF; border-radius: 999px; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 650; cursor: pointer;">Reject all</button>
+<button type="button" data-action="acceptAll" style="min-height: 46px; padding: 0 20px; border: 2px solid #FFFFFF; border-radius: 999px; background: transparent; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 650; cursor: pointer;">Accept all</button>
+</div>
+</section>
+</div>
+
+</div>
+</body>
+</html>

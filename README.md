@@ -1,7 +1,7 @@
 # Relay ERP website
 
-The marketing site for [relayerp.app](https://relayerp.app): the landing page, the cookie policy
-and the privacy policy.
+The marketing site for [relayerp.app](https://relayerp.app): the landing page, the cookie policy,
+the privacy policy and the terms of service.
 
 This repository is public so it can be deployed, but it is **not open source**. Copying,
 reusing or redeploying it is not allowed. See [LICENSE](LICENSE).
@@ -13,6 +13,7 @@ reusing or redeploying it is not allowed. See [LICENSE](LICENSE).
 | `index.html`         | Landing page                                                      |
 | `cookies/index.html` | Cookie policy (`/cookies/`)                                       |
 | `privacy/index.html` | Privacy policy (`/privacy/`)                                      |
+| `terms/index.html`   | Terms of service (`/terms/`)                                      |
 | `assets/site.js`     | Cookie consent, cookie settings and the pricing period switch     |
 | `assets/config.js`   | Google Analytics measurement ID and Meta Pixel ID (empty = off)   |
 | `logo.svg`           | Favicon and logo                                                  |
@@ -21,8 +22,8 @@ It is a static site with no build step and no dependencies.
 
 ## Deploy
 
-Any static host works. Serve the repository root as the site root so `/cookies/` and
-`/privacy/` resolve to their `index.html`.
+Any static host works. Serve the repository root as the site root so `/cookies/`,
+`/privacy/` and `/terms/` resolve to their `index.html`.
 
 - **Vercel / Netlify / Cloudflare Pages:** import the repository, set no build command and use
   the repository root as the output directory.

@@ -14,7 +14,7 @@ reusing or redeploying it is not allowed. See [LICENSE](LICENSE).
 | `cookies/index.html` | Cookie policy (`/cookies/`)                                       |
 | `privacy/index.html` | Privacy policy (`/privacy/`)                                      |
 | `terms/index.html`   | Terms of service (`/terms/`)                                      |
-| `assets/site.js`     | Cookie consent, cookie settings and the pricing period switch     |
+| `assets/site.js`     | Cookie consent, cookie settings and the question switcher         |
 | `assets/config.js`   | Google Analytics measurement ID and Meta Pixel ID (empty = off)   |
 | `logo.svg`           | Favicon and logo                                                  |
 

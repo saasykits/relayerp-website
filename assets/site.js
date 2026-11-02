@@ -4,11 +4,6 @@
   var CONSENT_KEY = "relay_consent";
   var CONSENT_VERSION = 1;
 
-  var PLANS = {
-    monthly: { price: "$9.99", per: "/ month", was: "$19.99", note: "a month, billed monthly" },
-    yearly: { price: "$99.99", per: "/ year", was: "$199.99", note: "a year, billed yearly" },
-  };
-
   function config() {
     return window.RELAY_CONFIG || {};
   }
@@ -137,23 +132,16 @@
     if (!readConsent()) show("banner", true);
   }
 
-  function setBilling(period) {
-    var plan = PLANS[period];
-    Object.keys(plan).forEach(function (key) {
-      Array.prototype.forEach.call(document.querySelectorAll('[data-plan="' + key + '"]'), function (node) {
-        node.textContent = plan[key];
-      });
+  function setTopic(topic) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-topic-panel]"), function (panel) {
+      if (panel.getAttribute("data-topic-panel") === topic) {
+        panel.removeAttribute("hidden");
+      } else {
+        panel.setAttribute("hidden", "");
+      }
     });
-    [
-      ["setMonthly", "monthly"],
-      ["setYearly", "yearly"],
-    ].forEach(function (pair) {
-      var button = document.querySelector('[data-action="' + pair[0] + '"]');
-      if (!button) return;
-      var active = pair[1] === period;
-      button.setAttribute("aria-pressed", active ? "true" : "false");
-      button.style.background = active ? "#0D0F22" : "transparent";
-      button.style.color = active ? "#FFFFFF" : "#0D0F22";
+    Array.prototype.forEach.call(document.querySelectorAll("[data-topic]"), function (button) {
+      button.setAttribute("aria-pressed", button.getAttribute("data-topic") === topic ? "true" : "false");
     });
   }
 
@@ -169,11 +157,8 @@
     },
     customize: openSettings,
     openCookieSettings: openSettings,
-    setMonthly: function () {
-      setBilling("monthly");
-    },
-    setYearly: function () {
-      setBilling("yearly");
+    setTopic: function (target) {
+      setTopic(target.getAttribute("data-topic"));
     },
   };
 
@@ -183,7 +168,7 @@
     var action = ACTIONS[target.getAttribute("data-action")];
     if (action) {
       event.preventDefault();
-      action();
+      action(target);
     }
   });
 
